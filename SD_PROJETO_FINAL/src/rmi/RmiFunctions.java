@@ -6,8 +6,8 @@ public interface RmiFunctions extends Remote {
 	
    public boolean reservarRestaurante(int idRestaurante, int qtdPessoas) throws RemoteException;
    
-   public boolean comprarIngressoCinema(int idCinema, int qtdIngressos, int idFilme) throws RemoteException;
+   public boolean comprarIngressoCinema(int idCinema, int idFilme, int horario, int qtdIngressos) throws RemoteException;
    
-   public boolean comprarIngressoTeatro(int idTeatro, int qtdIngressos, int idPeca) throws RemoteException;
+   public boolean comprarIngressoTeatro(int idTeatro, int idPeca, int idHorario, int qtdIngressos) throws RemoteException;
    
 }

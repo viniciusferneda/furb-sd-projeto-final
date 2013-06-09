@@ -11,8 +11,8 @@ public class RmiClient {
          RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
          
          boolean reservaRestaurante = obj.reservarRestaurante(1, 2);
-         boolean compraIngressoCinema = obj.comprarIngressoCinema(1, 2, 1);
-         boolean compraIngressoTeatro = obj.comprarIngressoTeatro(1, 4, 1);
+         boolean compraIngressoCinema = obj.comprarIngressoCinema(1, 1, 1, 2);
+         boolean compraIngressoTeatro = obj.comprarIngressoTeatro(1, 1, 1, 2);
          
          System.out.println("Mensagem do Servidor: " + (reservaRestaurante ? "Reserva de restaurante realizada" : "Reserva de restaurante não realizada"));
          
