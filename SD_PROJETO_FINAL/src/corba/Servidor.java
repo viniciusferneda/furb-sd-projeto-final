@@ -23,7 +23,7 @@ public class Servidor {
 
 			// Pega a referência do servidor
 			org.omg.CORBA.Object ref = rootpoa.servant_to_reference(impl);
-			Msg_Boas_Vindas href = Msg_Boas_VindasHelper.narrow(ref);
+			Msg_Cadastros href = Msg_CadastrosHelper.narrow(ref);
 
 			// Obtém uma referência para o servidor de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");

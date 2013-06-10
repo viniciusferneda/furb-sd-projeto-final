@@ -1,6 +1,5 @@
 package corba;
 
-import BoasVindas.*;
 import org.omg.CORBA.*;
 import org.omg.CosNaming.*;
 import org.omg.CosNaming.NamingContextPackage.*;
@@ -20,7 +19,7 @@ public class Cliente {
 
 			// Obtem referencia para o servidor
 			String name = "Msg_Boas_Vindas";
-			Msg_Boas_Vindas server = Msg_Boas_VindasHelper.narrow(ncRef.resolve_str(name));
+			Msg_Cadastros server = Msg_CadastrosHelper.narrow(ncRef.resolve_str(name));
 
 			// Imprime mensagem de boas-vindas
 			System.out.println(server.boas_vindas());
