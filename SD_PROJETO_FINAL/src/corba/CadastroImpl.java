@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 import util.Paths;
 
-public class CadastroImpl {
+public class CadastroImpl extends CadastrosPOA{
 
 	private static String pathRestaurante = Paths.RESTAURANTE.getPath();
 	private static String pathCinema = Paths.CINEMA.getPath();

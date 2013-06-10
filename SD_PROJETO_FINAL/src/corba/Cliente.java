@@ -15,8 +15,7 @@ public class Cliente {
 			ORB orb = ORB.init(args, null);
 
 			// Obtem referencia para o servico de nomes
-			org.omg.CORBA.Object objRef = orb
-					.resolve_initial_references("NameService");
+			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
 			NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
 			// Obtem referencia para o servidor
