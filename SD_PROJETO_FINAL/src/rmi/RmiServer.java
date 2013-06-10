@@ -8,20 +8,19 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import util.Paths;
+
 import model.Cinema;
 import model.Restaurante;
 import model.Teatro;
 
 public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 
-	private static String pathRestaurante = "C:\\Users\\Vinicius\\git\\SD_PROJETO_FINAL\\SD_PROJETO_FINAL\\Restaurante.txt";
-	private static String pathCinema = "C:\\Users\\Vinicius\\git\\SD_PROJETO_FINAL\\SD_PROJETO_FINAL\\Cinema.txt";
-	private static String pathTeatro = "C:\\Users\\Vinicius\\git\\SD_PROJETO_FINAL\\SD_PROJETO_FINAL\\Teatro.txt";
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+
+	private static String pathRestaurante = Paths.RESTAURANTE.getPath();
+	private static String pathCinema = Paths.CINEMA.getPath();
+	private static String pathTeatro = Paths.TEATRO.getPath();
 
 	public RmiServer() throws RemoteException {
 		super();
