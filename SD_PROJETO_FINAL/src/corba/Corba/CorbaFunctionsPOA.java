@@ -8,13 +8,15 @@ package corba.Corba;
 * Domingo, 16 de Junho de 2013 14h29min21s BRT
 */
 
+@SuppressWarnings("unchecked")
 public abstract class CorbaFunctionsPOA extends org.omg.PortableServer.Servant
  implements CorbaFunctionsOperations, org.omg.CORBA.portable.InvokeHandler
 {
 
   // Constructors
 
-  private static java.util.Hashtable _methods = new java.util.Hashtable ();
+  @SuppressWarnings("rawtypes")
+private static java.util.Hashtable _methods = new java.util.Hashtable ();
   static
   {
     _methods.put ("addRestaurante", new java.lang.Integer (0));

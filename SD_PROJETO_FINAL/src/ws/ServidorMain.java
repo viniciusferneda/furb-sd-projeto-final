@@ -8,7 +8,7 @@ public class ServidorMain {
 		
 		ServidorWeb service = new ServidorWeb();
 		
-		Endpoint endpoint = Endpoint.publish("http://localhost:8080/reservarRestaurante", service);
+		Endpoint.publish("http://localhost:8080/reservarRestaurante", service);
 		
 	}
 	
