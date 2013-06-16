@@ -1,4 +1,4 @@
-package corba;
+package corba.Corba;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -10,7 +10,7 @@ import java.io.PrintWriter;
 
 import util.Paths;
 
-public class CadastroImpl extends CadastrosPOA{
+public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 
 	private static String pathRestaurante = Paths.RESTAURANTE.getPath();
 	private static String pathCinema = Paths.CINEMA.getPath();
@@ -24,8 +24,8 @@ public class CadastroImpl extends CadastrosPOA{
 	 * @param capacidade
 	 * @return
 	 */
-	public boolean addRestaurante(int id, String nome, int capacidade) {
-
+	@Override
+	public boolean addRestaurante(short id, String nome, short capacidade) {
 		boolean cadastroRealizado = true;
 
 		if (!new File(pathRestaurante).exists()) {
@@ -105,8 +105,8 @@ public class CadastroImpl extends CadastrosPOA{
 	 * @param capacidade
 	 * @return
 	 */
-	public boolean addCinema(int id, String nome, int idFilme, String nomeFilme, int horario, int capacidade) {
-
+	@Override
+	public boolean addCinema(short id, String nome, short idFilme, String nomeFilme, short horario, short capacidade) {
 		boolean cadastroRealizado = true;
 
 		if (!new File(pathCinema).exists()) {
@@ -186,8 +186,8 @@ public class CadastroImpl extends CadastrosPOA{
 	 * @param capacidade
 	 * @return
 	 */
-	public boolean addTeatro(int id, String nome, int idPeca, String nomePeca, int horario, int capacidade) {
-
+	@Override
+	public boolean addTeatro(short id, String nome, short idPeca, String nomePeca, short horario, short capacidade) {
 		boolean cadastroRealizado = true;
 
 		if (!new File(pathTeatro).exists()) {
@@ -254,7 +254,121 @@ public class CadastroImpl extends CadastrosPOA{
 		}
 		
 		return cadastroRealizado;
+	}
+
+	@Override
+	public String recuperaRestaurante(short id) {
 		
+		String restaurante = null;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(pathRestaurante));
+
+			try {
+				String line = br.readLine();
+				
+				while (line != null) {
+					String[] restaurantes = line.split(";");
+					if(Integer.parseInt(restaurantes[0]) == id){
+						restaurante = line;
+						break;
+					}else{
+						line = br.readLine();
+					}
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return restaurante;
+	}
+
+	@Override
+	public String recuperaCinema(short idCinema, short idFilme, short idHorario) {
+		
+		String cinema = null;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(pathCinema));
+
+			try {
+				String line = br.readLine();
+				
+				while (line != null) {
+					String[] cinemas = line.split(";");
+					if(Integer.parseInt(cinemas[0]) == idCinema 
+							&& Integer.parseInt(cinemas[2]) == idFilme
+							&& Integer.parseInt(cinemas[4]) == idHorario){
+						cinema = line;
+						break;
+					}else{
+						line = br.readLine();
+					}
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+
+		return cinema;
+	}
+
+	@Override
+	public String recuperaTeatro(short idTeatro, short idPeca, short idHorario) {
+		
+		String teatro = null;
+		
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(pathTeatro));
+
+			try {
+				String line = br.readLine();
+				
+				while (line != null) {
+					String[] teatros = line.split(";");
+					if(Integer.parseInt(teatros[0]) == idTeatro 
+							&& Integer.parseInt(teatros[2]) == idPeca
+							&& Integer.parseInt(teatros[4]) == idHorario){
+						teatro = line;
+						break;
+					}else{
+						line = br.readLine();
+					}
+				}
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		return teatro;
 	}
 
 }

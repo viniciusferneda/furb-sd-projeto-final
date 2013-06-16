@@ -1,8 +1,11 @@
 package corba;
 
-import org.omg.CORBA.*;
-import org.omg.CosNaming.*;
-import org.omg.CosNaming.NamingContextPackage.*;
+import org.omg.CORBA.ORB;
+import org.omg.CosNaming.NamingContextExt;
+import org.omg.CosNaming.NamingContextExtHelper;
+
+import corba.Corba.CorbaFunctions;
+import corba.Corba.CorbaFunctionsHelper;
 
 public class Cliente {
 
@@ -18,11 +21,11 @@ public class Cliente {
 			NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
 
 			// Obtem referencia para o servidor
-			String name = "Msg_Boas_Vindas";
-			Msg_Cadastros server = Msg_CadastrosHelper.narrow(ncRef.resolve_str(name));
+			String name = "CorbaFunctions";
+			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Imprime mensagem de boas-vindas
-			System.out.println(server.boas_vindas());
+			System.out.println(server.recuperaRestaurante(Short.parseShort("1")));
 
 		} catch (Exception e) {
 			System.out.println("ERROR : " + e);

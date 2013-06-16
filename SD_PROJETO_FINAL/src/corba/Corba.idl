@@ -1,0 +1,17 @@
+module Corba {
+
+
+  interface CorbaFunctions {
+
+	boolean addRestaurante(in short id, in string nome, in short capacidade);
+    boolean addCinema(in short id, in string nome, in short idFilme, in string nomeFilme, in short horario, in short capacidade);
+	boolean addTeatro(in short id, in string nome, in short idPeca, in string nomePeca, in short horario, in short capacidade);
+
+	string recuperaRestaurante(in short id);
+	string recuperaCinema(in short idCinema, in short idFilme, in short idHorario);
+	string recuperaTeatro(in short idTeatro, in short idPeca, in short idHorario);
+	
+  };
+
+
+};
