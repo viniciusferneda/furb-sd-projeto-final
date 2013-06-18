@@ -16,9 +16,9 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}int"/>
+ *         &lt;element name="arg0" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="arg1" type="{http://www.w3.org/2001/XMLSchema}short"/>
+ *         &lt;element name="arg2" type="{http://www.w3.org/2001/XMLSchema}short"/>
  *         &lt;element name="arg3" type="{http://www.w3.org/2001/XMLSchema}int"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
@@ -37,16 +37,16 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ComprarIngressoTeatro {
 
-    protected int arg0;
-    protected int arg1;
-    protected int arg2;
+    protected short arg0;
+    protected short arg1;
+    protected short arg2;
     protected int arg3;
 
     /**
      * Gets the value of the arg0 property.
      * 
      */
-    public int getArg0() {
+    public short getArg0() {
         return arg0;
     }
 
@@ -54,7 +54,7 @@ public class ComprarIngressoTeatro {
      * Sets the value of the arg0 property.
      * 
      */
-    public void setArg0(int value) {
+    public void setArg0(short value) {
         this.arg0 = value;
     }
 
@@ -62,7 +62,7 @@ public class ComprarIngressoTeatro {
      * Gets the value of the arg1 property.
      * 
      */
-    public int getArg1() {
+    public short getArg1() {
         return arg1;
     }
 
@@ -70,7 +70,7 @@ public class ComprarIngressoTeatro {
      * Sets the value of the arg1 property.
      * 
      */
-    public void setArg1(int value) {
+    public void setArg1(short value) {
         this.arg1 = value;
     }
 
@@ -78,7 +78,7 @@ public class ComprarIngressoTeatro {
      * Gets the value of the arg2 property.
      * 
      */
-    public int getArg2() {
+    public short getArg2() {
         return arg2;
     }
 
@@ -86,7 +86,7 @@ public class ComprarIngressoTeatro {
      * Sets the value of the arg2 property.
      * 
      */
-    public void setArg2(int value) {
+    public void setArg2(short value) {
         this.arg2 = value;
     }
 

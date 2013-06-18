@@ -18,20 +18,20 @@ import javax.xml.bind.annotation.XmlType;
 public class ComprarIngressoTeatro {
 
     @XmlElement(name = "arg0", namespace = "")
-    private int arg0;
+    private short arg0;
     @XmlElement(name = "arg1", namespace = "")
-    private int arg1;
+    private short arg1;
     @XmlElement(name = "arg2", namespace = "")
-    private int arg2;
+    private short arg2;
     @XmlElement(name = "arg3", namespace = "")
     private int arg3;
 
     /**
      * 
      * @return
-     *     returns int
+     *     returns short
      */
-    public int getArg0() {
+    public short getArg0() {
         return this.arg0;
     }
 
@@ -40,16 +40,16 @@ public class ComprarIngressoTeatro {
      * @param arg0
      *     the value for the arg0 property
      */
-    public void setArg0(int arg0) {
+    public void setArg0(short arg0) {
         this.arg0 = arg0;
     }
 
     /**
      * 
      * @return
-     *     returns int
+     *     returns short
      */
-    public int getArg1() {
+    public short getArg1() {
         return this.arg1;
     }
 
@@ -58,16 +58,16 @@ public class ComprarIngressoTeatro {
      * @param arg1
      *     the value for the arg1 property
      */
-    public void setArg1(int arg1) {
+    public void setArg1(short arg1) {
         this.arg1 = arg1;
     }
 
     /**
      * 
      * @return
-     *     returns int
+     *     returns short
      */
-    public int getArg2() {
+    public short getArg2() {
         return this.arg2;
     }
 
@@ -76,7 +76,7 @@ public class ComprarIngressoTeatro {
      * @param arg2
      *     the value for the arg2 property
      */
-    public void setArg2(int arg2) {
+    public void setArg2(short arg2) {
         this.arg2 = arg2;
     }
 

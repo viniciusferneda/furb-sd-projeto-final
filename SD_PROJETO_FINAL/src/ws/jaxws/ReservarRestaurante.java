@@ -16,16 +16,16 @@ import javax.xml.bind.annotation.XmlType;
 public class ReservarRestaurante {
 
     @XmlElement(name = "arg0", namespace = "")
-    private int arg0;
+    private short arg0;
     @XmlElement(name = "arg1", namespace = "")
     private int arg1;
 
     /**
      * 
      * @return
-     *     returns int
+     *     returns short
      */
-    public int getArg0() {
+    public short getArg0() {
         return this.arg0;
     }
 
@@ -34,7 +34,7 @@ public class ReservarRestaurante {
      * @param arg0
      *     the value for the arg0 property
      */
-    public void setArg0(int arg0) {
+    public void setArg0(short arg0) {
         this.arg0 = arg0;
     }
 

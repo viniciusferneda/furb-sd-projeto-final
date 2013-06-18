@@ -27,8 +27,10 @@ public class ServidorWeb {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -63,8 +65,10 @@ public class ServidorWeb {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -99,8 +103,10 @@ public class ServidorWeb {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -135,8 +141,10 @@ public class ServidorWeb {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -175,8 +183,10 @@ public class ServidorWeb {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -214,9 +224,10 @@ public class ServidorWeb {
 		String teatro = "Teatro não cadastrado";
 		
 		try {
-
+			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -253,7 +264,7 @@ public class ServidorWeb {
 		String msg = "Reserva de restaurante não realizada"; 
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
 			
 			if(obj.reservarRestaurante(idRestaurante, qtdPessoas)){
 				msg = "Reserva de restaurante realizada";
@@ -271,7 +282,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do cinema não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
 			
 			if(obj.comprarIngressoCinema(idCinema, idFilme, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do cinema realizada";
@@ -289,7 +300,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do teatro não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
 			
 			if(obj.comprarIngressoTeatro(idTeatro, idPeca, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do teatro realizada";
