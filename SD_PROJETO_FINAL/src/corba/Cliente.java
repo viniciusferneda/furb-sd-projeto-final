@@ -25,7 +25,7 @@ public class Cliente {
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Imprime mensagem de boas-vindas
-			System.out.println(server.recuperaRestaurante(Short.parseShort("1")));
+			System.out.println(server.addRestaurante(Short.parseShort("1"), "LALA", Short.parseShort("100")));
 
 		} catch (Exception e) {
 			System.out.println("ERROR : " + e);

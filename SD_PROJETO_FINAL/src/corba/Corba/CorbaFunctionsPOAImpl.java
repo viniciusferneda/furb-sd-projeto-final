@@ -67,7 +67,7 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 				pw.flush();
 			} while (line != null);
 
-			pw.println(id+";"+nome+";"+";"+capacidade);
+			pw.println(id+";"+nome+";"+capacidade);
 			pw.flush();
 
 			pw.close();
