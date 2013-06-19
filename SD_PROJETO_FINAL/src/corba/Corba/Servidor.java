@@ -36,7 +36,7 @@ public class Servidor {
 			NameComponent path[] = ncRef.to_name(name);
 			ncRef.rebind(path, href);
 
-			System.out.println("Servidor aguardando requisicoes ....");
+			System.out.println("Servidor Corba aguardando requisicoes ....");
 
 			// Aguarda chamadas dos clientes
 			orb.run();

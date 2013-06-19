@@ -259,7 +259,7 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 	@Override
 	public String recuperaRestaurante(short id) {
 		
-		String restaurante = null;
+		String restaurante = "";
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(pathRestaurante));
@@ -296,7 +296,7 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 	@Override
 	public String recuperaCinema(short idCinema, short idFilme, short idHorario) {
 		
-		String cinema = null;
+		String cinema = "";
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(pathCinema));
@@ -335,7 +335,7 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 	@Override
 	public String recuperaTeatro(short idTeatro, short idPeca, short idHorario) {
 		
-		String teatro = null;
+		String teatro = "";
 		
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(pathTeatro));

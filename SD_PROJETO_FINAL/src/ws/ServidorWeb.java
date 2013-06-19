@@ -27,7 +27,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -53,6 +53,8 @@ public class ServidorWeb {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return msg;
@@ -65,7 +67,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -91,6 +93,8 @@ public class ServidorWeb {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return msg;
@@ -103,7 +107,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -129,6 +133,8 @@ public class ServidorWeb {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return msg;
@@ -141,7 +147,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -155,10 +161,10 @@ public class ServidorWeb {
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Recupera o restaurante
-			restaurante = server.recuperaRestaurante(id);
+			String restauranteStr = server.recuperaRestaurante(id);
 			
-			if(restaurante != null){
-				String[] restauranteSplit = restaurante.split(";");
+			if(restauranteStr != null && !restauranteStr.isEmpty()){
+				String[] restauranteSplit = restauranteStr.split(";");
 				restaurante = "Código: "+restauranteSplit[0]+"\nNome: "+restauranteSplit[1] + "\nCapacidade: "+restauranteSplit[2];
 			}
 			
@@ -169,6 +175,8 @@ public class ServidorWeb {
 		} catch (CannotProceed e) {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
+			e.printStackTrace();
+		}catch (Exception e) {
 			e.printStackTrace();
 		}
 
@@ -183,7 +191,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -197,10 +205,10 @@ public class ServidorWeb {
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Recupera o restaurante
-			cinema = server.recuperaCinema(idCinema, idFilme, idHorario);
+			String cinemaStr = server.recuperaCinema(idCinema, idFilme, idHorario);
 			
-			if(cinema != null){
-				String[] cinemaSplit = cinema.split(";");
+			if(cinemaStr != null && !cinemaStr.isEmpty()){
+				String[] cinemaSplit = cinemaStr.split(";");
 				cinema = "Código: "+cinemaSplit[0]+"\nNome: "+cinemaSplit[1] + "\nCódigo do Filme: "+cinemaSplit[2]
 						+"\nNome do Filme: "+cinemaSplit[3]+"\nHorário: "+cinemaSplit[4]+"\nCapacidade: "+cinemaSplit[5];
 			}
@@ -213,6 +221,8 @@ public class ServidorWeb {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return cinema;
@@ -224,7 +234,7 @@ public class ServidorWeb {
 		String teatro = "Teatro não cadastrado";
 		
 		try {
-			String[] args = new String[]{"-ORBInitialHost", "192.168.186.1"};
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -238,10 +248,10 @@ public class ServidorWeb {
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Recupera o restaurante
-			teatro = server.recuperaTeatro(idTeatro, idPeca, idHorario);
+			String teatroStr = server.recuperaTeatro(idTeatro, idPeca, idHorario);
 			
-			if(teatro != null){
-				String[] teatroSplit = teatro.split(";");
+			if(teatroStr != null && !teatroStr.isEmpty()){
+				String[] teatroSplit = teatroStr.split(";");
 				teatro = "Código: "+teatroSplit[0]+"\nNome: "+teatroSplit[1] + "\nCódigo da Peça: "+teatroSplit[2]
 						+"\nNome da Peça: "+teatroSplit[3]+"\nHorário: "+teatroSplit[4]+"\nCapacidade: "+teatroSplit[5];
 			}
@@ -254,6 +264,8 @@ public class ServidorWeb {
 			e.printStackTrace();
 		} catch (org.omg.CosNaming.NamingContextPackage.InvalidName e) {
 			e.printStackTrace();
+		}catch (Exception e) {
+			e.printStackTrace();
 		}
 
 		return teatro;
@@ -264,7 +276,7 @@ public class ServidorWeb {
 		String msg = "Reserva de restaurante não realizada"; 
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
 			
 			if(obj.reservarRestaurante(idRestaurante, qtdPessoas)){
 				msg = "Reserva de restaurante realizada";
@@ -282,7 +294,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do cinema não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
 			
 			if(obj.comprarIngressoCinema(idCinema, idFilme, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do cinema realizada";
@@ -300,7 +312,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do teatro não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//192.168.186.1/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
 			
 			if(obj.comprarIngressoTeatro(idTeatro, idPeca, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do teatro realizada";

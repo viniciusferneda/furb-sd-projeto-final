@@ -26,7 +26,13 @@ public class Cliente {
 
 			// Imprime mensagem de boas-vindas
 			System.out.println(server.addRestaurante(Short.parseShort("1"), "LALA", Short.parseShort("100")));
+			System.out.println(server.addCinema(Short.parseShort("1"), "TRALALA", Short.parseShort("1"), "ZECAS", Short.parseShort("1"), Short.parseShort("80")));
+			System.out.println(server.addTeatro(Short.parseShort("1"), "TROLALA", Short.parseShort("1"), "JUCAS", Short.parseShort("1"), Short.parseShort("50")));
 
+			System.out.println(server.recuperaRestaurante(Short.parseShort("1")));
+			System.out.println(server.recuperaCinema(Short.parseShort("1"), Short.parseShort("1"), Short.parseShort("1")));
+			System.out.println(server.recuperaTeatro(Short.parseShort("1"), Short.parseShort("1"), Short.parseShort("1")));
+			
 		} catch (Exception e) {
 			System.out.println("ERROR : " + e);
 			e.printStackTrace(System.out);

@@ -30,6 +30,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		try {
 			RmiServer obj = new RmiServer();
 			Naming.rebind("//localhost/RmiFunctions", obj);
+			System.out.println("Servidor RMI aguardando requisicoes ....");
 		} catch (Exception ex) {
 			System.out.println("Exception: " + ex.getMessage());
 		}
@@ -42,8 +43,10 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -54,9 +57,9 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
 			// Recupera o restaurante
-			String restauranteStr= server.recuperaRestaurante(idRestaurante);
+			String restauranteStr = server.recuperaRestaurante(idRestaurante);
 
-			if(restauranteStr != null){
+			if(restauranteStr != null && !restauranteStr.isEmpty()){
 				
 				String[] restaurantes = restauranteStr.split(";");
 				Restaurante restaurante = new Restaurante(Integer.parseInt(restaurantes[0]), restaurantes[1], Integer.parseInt(restaurantes[2]));
@@ -86,8 +89,10 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -100,7 +105,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			// Recupera o restaurante
 			String cinemaStr = server.recuperaCinema(idCinema, idFilme, idHorario);
 
-			if(cinemaStr != null){
+			if(cinemaStr != null && !cinemaStr.isEmpty()){
 				
 				String[] cinemas = cinemaStr.split(";");
 				Cinema cinema = new Cinema(Integer.parseInt(cinemas[0]), cinemas[1], Integer.parseInt(cinemas[2]), cinemas[3], Integer.parseInt(cinemas[4]), Integer.parseInt(cinemas[5]));
@@ -130,8 +135,10 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
+			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			
 			// Cria e inicializa o ORB
-			ORB orb = ORB.init();
+			ORB orb = ORB.init(args, null);
 			
 			// Obtem referencia para o servico de nomes
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -144,7 +151,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			// Recupera o restaurante
 			String teatroStr = server.recuperaTeatro(idTeatro, idPeca, idHorario);
 
-			if(teatroStr != null){
+			if(teatroStr != null && !teatroStr.isEmpty()){
 				
 				String[] teatros = teatroStr.split(";");
 				Teatro teatro = new Teatro(Integer.parseInt(teatros[0]), teatros[1], Integer.parseInt(teatros[2]), teatros[3], Integer.parseInt(teatros[4]), Integer.parseInt(teatros[5]));
