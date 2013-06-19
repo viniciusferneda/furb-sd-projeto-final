@@ -3,7 +3,7 @@ package util;
 public enum EnderecoIP {
 
 	LOCALHOST("localhost"),
-	IP("192.168.0.1");
+	IP("192.168.186.1");
 	
 	private String ip;
 	
