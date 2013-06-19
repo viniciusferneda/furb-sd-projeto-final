@@ -13,6 +13,7 @@ import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 
 import rmi.RmiFunctions;
+import util.EnderecoIP;
 
 import corba.Corba.CorbaFunctions;
 import corba.Corba.CorbaFunctionsHelper;
@@ -27,7 +28,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -67,7 +68,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -107,7 +108,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -147,7 +148,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -191,7 +192,7 @@ public class ServidorWeb {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -234,7 +235,7 @@ public class ServidorWeb {
 		String teatro = "Teatro não cadastrado";
 		
 		try {
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.IP.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -276,7 +277,7 @@ public class ServidorWeb {
 		String msg = "Reserva de restaurante não realizada"; 
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
 			if(obj.reservarRestaurante(idRestaurante, qtdPessoas)){
 				msg = "Reserva de restaurante realizada";
@@ -294,7 +295,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do cinema não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
 			if(obj.comprarIngressoCinema(idCinema, idFilme, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do cinema realizada";
@@ -312,7 +313,7 @@ public class ServidorWeb {
 		String msg = "Compra de ingresso do teatro não realizada";
 		
 		try {
-			RmiFunctions obj = (RmiFunctions)Naming.lookup("//localhost/RmiFunctions");
+			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
 			if(obj.comprarIngressoTeatro(idTeatro, idPeca, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do teatro realizada";

@@ -15,6 +15,8 @@ import org.omg.CosNaming.NamingContextExtHelper;
 import org.omg.CosNaming.NamingContextPackage.CannotProceed;
 import org.omg.CosNaming.NamingContextPackage.NotFound;
 
+import util.EnderecoIP;
+
 import corba.Corba.CorbaFunctions;
 import corba.Corba.CorbaFunctionsHelper;
 
@@ -43,7 +45,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.LOCALHOST.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -89,7 +91,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.LOCALHOST.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
@@ -135,7 +137,7 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 		
 		try {
 
-			String[] args = new String[]{"-ORBInitialHost", "localhost"};
+			String[] args = new String[]{"-ORBInitialHost", EnderecoIP.LOCALHOST.getIP()};
 			
 			// Cria e inicializa o ORB
 			ORB orb = ORB.init(args, null);
