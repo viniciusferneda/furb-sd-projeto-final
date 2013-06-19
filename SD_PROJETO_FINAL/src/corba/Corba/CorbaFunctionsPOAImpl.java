@@ -67,6 +67,8 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 				pw.flush();
 			} while (line != null);
 
+			System.out.println("Cadastrado Restaurante: "+id+";"+nome+";"+capacidade);
+			
 			pw.println(id+";"+nome+";"+capacidade);
 			pw.flush();
 
@@ -148,6 +150,8 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 				pw.flush();
 			} while (line != null);
 
+			System.out.println("Cadastrado Cinema: "+id+";"+nome+";"+idFilme+";"+nomeFilme+";"+horario+";"+capacidade);
+			
 			pw.println(id+";"+nome+";"+idFilme+";"+nomeFilme+";"+horario+";"+capacidade);
 			pw.flush();
 
@@ -229,6 +233,8 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 				pw.flush();
 			} while (line != null);
 
+			System.out.println("Cadastrado Teatro: "+id+";"+nome+";"+idPeca+";"+nomePeca+";"+horario+";"+capacidade);
+			
 			pw.println(id+";"+nome+";"+idPeca+";"+nomePeca+";"+horario+";"+capacidade);
 			pw.flush();
 
@@ -267,10 +273,13 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 			try {
 				String line = br.readLine();
 				
+				System.out.println("Procurando Restaurante: "+id);
+				
 				while (line != null) {
 					String[] restaurantes = line.split(";");
 					if(Integer.parseInt(restaurantes[0]) == id){
 						restaurante = line;
+						System.out.println("Recuperado Restaurante: "+restaurante);
 						break;
 					}else{
 						line = br.readLine();
@@ -304,12 +313,15 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 			try {
 				String line = br.readLine();
 				
+				System.out.println("Procurando Cinema: "+idCinema+";"+idFilme+";"+idHorario);
+				
 				while (line != null) {
 					String[] cinemas = line.split(";");
 					if(Integer.parseInt(cinemas[0]) == idCinema 
 							&& Integer.parseInt(cinemas[2]) == idFilme
 							&& Integer.parseInt(cinemas[4]) == idHorario){
 						cinema = line;
+						System.out.println("Recuperado Cinema: "+cinema);
 						break;
 					}else{
 						line = br.readLine();
@@ -343,12 +355,15 @@ public class CorbaFunctionsPOAImpl extends CorbaFunctionsPOA{
 			try {
 				String line = br.readLine();
 				
+				System.out.println("Procurando Teatro: "+idTeatro+";"+idPeca+";"+idHorario);
+				
 				while (line != null) {
 					String[] teatros = line.split(";");
 					if(Integer.parseInt(teatros[0]) == idTeatro 
 							&& Integer.parseInt(teatros[2]) == idPeca
 							&& Integer.parseInt(teatros[4]) == idHorario){
 						teatro = line;
+						System.out.println("Recuperado Teatro: "+teatro);
 						break;
 					}else{
 						line = br.readLine();

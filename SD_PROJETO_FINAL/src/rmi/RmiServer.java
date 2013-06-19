@@ -58,6 +58,8 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recebeu o Restaurante: "+idRestaurante+" Reservas: "+qtdPessoas);
+			
 			// Recupera o restaurante
 			String restauranteStr = server.recuperaRestaurante(idRestaurante);
 
@@ -66,8 +68,13 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				String[] restaurantes = restauranteStr.split(";");
 				Restaurante restaurante = new Restaurante(Integer.parseInt(restaurantes[0]), restaurantes[1], Integer.parseInt(restaurantes[2]));
 				
+				System.out.println("Restaurante com capacidade de "+restaurante.getCapacidade());
+				
 				if(restaurante != null && restaurante.getCapacidade() > qtdPessoas){
 					reservaRealizada = true;
+					System.out.println("Restaurante reservado com sucesso");
+				}else{
+					System.out.println("Restaurante não reservado por falta de pessoas!");
 				}
 			}
 			
@@ -104,6 +111,8 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recebeu o Cinema: "+idCinema+"Filme: "+idFilme+"Horario: "+idHorario+"Reservas: "+qtdIngressos);
+			
 			// Recupera o restaurante
 			String cinemaStr = server.recuperaCinema(idCinema, idFilme, idHorario);
 
@@ -112,8 +121,13 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				String[] cinemas = cinemaStr.split(";");
 				Cinema cinema = new Cinema(Integer.parseInt(cinemas[0]), cinemas[1], Integer.parseInt(cinemas[2]), cinemas[3], Integer.parseInt(cinemas[4]), Integer.parseInt(cinemas[5]));
 				
+				System.out.println("Cinema com capacidade de "+cinema.getCapacidade());
+				
 				if(cinema != null && cinema.getCapacidade() > qtdIngressos){
 					compraRealizada = true;
+					System.out.println("Comprar de ingresso para Cinema realizada com suceso!");
+				}else{
+					System.out.println("Comprar de ingresso para Cinema não realizada por falta de capacidade!");
 				}
 			}
 			
@@ -150,6 +164,8 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recebeu o Teatro: "+idTeatro+"Peca: "+idPeca+"Horario: "+idHorario+"Reservas: "+qtdIngressos);
+			
 			// Recupera o restaurante
 			String teatroStr = server.recuperaTeatro(idTeatro, idPeca, idHorario);
 
@@ -158,8 +174,13 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				String[] teatros = teatroStr.split(";");
 				Teatro teatro = new Teatro(Integer.parseInt(teatros[0]), teatros[1], Integer.parseInt(teatros[2]), teatros[3], Integer.parseInt(teatros[4]), Integer.parseInt(teatros[5]));
 				
+				System.out.println("Teatro com capacidade de "+teatro.getCapacidade());
+				
 				if(teatro != null && teatro.getCapacidade() > qtdIngressos){
 					compraRealizada = true;
+					System.out.println("Reserva de teatro realizada com sucesso!");
+				}else{
+					System.out.println("Reserva de teatro realizada não realizada por falta de ingressos!");
 				}
 			}
 			
