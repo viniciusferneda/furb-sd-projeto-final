@@ -41,9 +41,14 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Realizando cadastro do restaurante "+id);
+			
 			// Realiza o cadastro
 			if(server.addRestaurante(id, nome, capacidade)){
 				msg = "Restaurante cadastrado com sucesso";
+				System.out.println("Restaurante "+id+" cadastrado com sucesso");
+			}else{
+				System.out.println("Restaurante "+id+" não cadastrado!");
 			}
 
 		} catch (InvalidName e) {
@@ -81,9 +86,14 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Realizando cadastro do cinema "+id+" filme "+idFilme+" horario "+horario);
+			
 			// Realiza o cadastro
 			if(server.addCinema(id, nome, idFilme, nomeFilme, horario, capacidade)){
 				msg = "Cinema cadastrado com sucesso";
+				System.out.println("Realizado cadastro do cinema "+id+" filme "+idFilme+" horario "+horario);
+			}else{
+				System.out.println("Não Realizado cadastro do cinema "+id+" filme "+idFilme+" horario "+horario);
 			}
 
 		} catch (InvalidName e) {
@@ -121,9 +131,14 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Realizando cadastro do teatro "+id+" peça "+idPeca+" horario "+horario);
+			
 			// Realiza o cadastro
 			if(server.addTeatro(id, nome, idPeca, nomePeca, horario, capacidade)){
 				msg = "Teatro cadastrado com sucesso";
+				System.out.println("Realizado cadastro do teatro "+id+" peça "+idPeca+" horario "+horario);
+			}else{
+				System.out.println("Não Realizado cadastro do teatro "+id+" peça "+idPeca+" horario "+horario);
 			}
 
 		} catch (InvalidName e) {
@@ -161,12 +176,17 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recuperando restaurante "+id);
+			
 			// Recupera o restaurante
 			String restauranteStr = server.recuperaRestaurante(id);
 			
 			if(restauranteStr != null && !restauranteStr.isEmpty()){
 				String[] restauranteSplit = restauranteStr.split(";");
 				restaurante = "Código: "+restauranteSplit[0]+"\nNome: "+restauranteSplit[1] + "\nCapacidade: "+restauranteSplit[2];
+				System.out.println("Recuperado restaurante\n"+restaurante);
+			}else{
+				System.out.println("Não Recuperado restaurante "+id);
 			}
 			
 		} catch (InvalidName e) {
@@ -205,6 +225,8 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recuperando cinema "+idCinema+" filme "+idFilme+" horario "+idHorario);
+			
 			// Recupera o restaurante
 			String cinemaStr = server.recuperaCinema(idCinema, idFilme, idHorario);
 			
@@ -212,6 +234,9 @@ public class ServidorWeb {
 				String[] cinemaSplit = cinemaStr.split(";");
 				cinema = "Código: "+cinemaSplit[0]+"\nNome: "+cinemaSplit[1] + "\nCódigo do Filme: "+cinemaSplit[2]
 						+"\nNome do Filme: "+cinemaSplit[3]+"\nHorário: "+cinemaSplit[4]+"\nCapacidade: "+cinemaSplit[5];
+				System.out.println("Recuperado cinema\n"+cinema);
+			}else{
+				System.out.println("Não Recuperado cinema "+idCinema+" filme "+idFilme+" horario "+idHorario);
 			}
 			
 		} catch (InvalidName e) {
@@ -248,6 +273,8 @@ public class ServidorWeb {
 			String name = "CorbaFunctions";
 			CorbaFunctions server = CorbaFunctionsHelper.narrow(ncRef.resolve_str(name));
 
+			System.out.println("Recuperando teatro "+idTeatro+" peça "+idPeca+" horario "+idHorario);
+			
 			// Recupera o restaurante
 			String teatroStr = server.recuperaTeatro(idTeatro, idPeca, idHorario);
 			
@@ -255,6 +282,9 @@ public class ServidorWeb {
 				String[] teatroSplit = teatroStr.split(";");
 				teatro = "Código: "+teatroSplit[0]+"\nNome: "+teatroSplit[1] + "\nCódigo da Peça: "+teatroSplit[2]
 						+"\nNome da Peça: "+teatroSplit[3]+"\nHorário: "+teatroSplit[4]+"\nCapacidade: "+teatroSplit[5];
+				System.out.println("Recuperado teatro\n"+teatro);
+			}else{
+				System.out.println("Não Recuperado teatro "+idTeatro+" peça "+idPeca+" horario "+idHorario);
 			}
 			
 		} catch (InvalidName e) {
@@ -279,8 +309,13 @@ public class ServidorWeb {
 		try {
 			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
+			System.out.println("Reservando restaurante "+idRestaurante+" para "+qtdPessoas+" pessoas");
+			
 			if(obj.reservarRestaurante(idRestaurante, qtdPessoas)){
 				msg = "Reserva de restaurante realizada";
+				System.out.println("Reserva realizada do restaurante "+idRestaurante+" para "+qtdPessoas+" pessoas");
+			}else{
+				System.out.println("Reserva não realizada do restaurante "+idRestaurante+" para "+qtdPessoas+" pessoas");
 			}
 		
 		} catch (Exception ex) {
@@ -297,8 +332,13 @@ public class ServidorWeb {
 		try {
 			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
+			System.out.println("Compra de ingresso do cinema "+idCinema+" filme "+idFilme+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
+			
 			if(obj.comprarIngressoCinema(idCinema, idFilme, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do cinema realizada";
+				System.out.println("Realizada compra de ingresso do cinema "+idCinema+" filme "+idFilme+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
+			}else{
+				System.out.println("Não Realizada compra de ingresso do cinema "+idCinema+" filme "+idFilme+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
 			}
 		
 		} catch (Exception ex) {
@@ -315,8 +355,13 @@ public class ServidorWeb {
 		try {
 			RmiFunctions obj = (RmiFunctions)Naming.lookup("//"+EnderecoIP.IP.getIP()+"/RmiFunctions");
 			
+			System.out.println("Compra de ingresso do teatro "+idTeatro+" peca "+idPeca+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
+			
 			if(obj.comprarIngressoTeatro(idTeatro, idPeca, idHorario, qtdIngressos)){
 				msg = "Compra de ingresso do teatro realizada";
+				System.out.println("Realizada compra de ingresso do tearo "+idTeatro+" peca "+idPeca+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
+			}else{
+				System.out.println("Não realizada compra de ingresso do tearo "+idTeatro+" peca "+idPeca+" horario "+idHorario+" para "+qtdIngressos+" pessoas");
 			}
 		
 		} catch (Exception ex) {

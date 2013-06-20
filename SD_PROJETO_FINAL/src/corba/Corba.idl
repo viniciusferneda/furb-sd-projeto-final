@@ -11,6 +11,10 @@ module Corba {
 	string recuperaCinema(in short idCinema, in short idFilme, in short idHorario);
 	string recuperaTeatro(in short idTeatro, in short idPeca, in short idHorario);
 	
+	boolean retiraCapacidadeRestaurante(in short id, in short capacidade);
+	boolean retiraCapacidadeCinema(in short idCinema, in short idFilme, in short idHorario, in short capacidade);
+	boolean retiraCapacidadeTeatro(in short idTeatro, in short idPeca, in short idHorario, in short capacidade);
+	
   };
 
 

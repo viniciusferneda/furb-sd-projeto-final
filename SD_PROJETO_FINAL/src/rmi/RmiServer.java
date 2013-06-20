@@ -70,11 +70,16 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				
 				System.out.println("Restaurante com capacidade de "+restaurante.getCapacidade());
 				
-				if(restaurante != null && restaurante.getCapacidade() > qtdPessoas){
-					reservaRealizada = true;
-					System.out.println("Restaurante reservado com sucesso");
+				if(restaurante != null && restaurante.getCapacidade() >= qtdPessoas){
+					
+					//Retira da capacidade do restaurante a quantidade que foi reservada
+					if(server.retiraCapacidadeRestaurante(idRestaurante, Short.parseShort(String.valueOf(qtdPessoas)))){
+						reservaRealizada = true;
+						System.out.println("Restaurante reservado com sucesso");
+					}
+					
 				}else{
-					System.out.println("Restaurante não reservado por falta de pessoas!");
+					System.out.println("Restaurante não reservado por falta de lugares disponíveis!");
 				}
 			}
 			
@@ -123,11 +128,16 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				
 				System.out.println("Cinema com capacidade de "+cinema.getCapacidade());
 				
-				if(cinema != null && cinema.getCapacidade() > qtdIngressos){
-					compraRealizada = true;
-					System.out.println("Comprar de ingresso para Cinema realizada com suceso!");
+				if(cinema != null && cinema.getCapacidade() >= qtdIngressos){
+
+					//Retira da capacidade do cinema a quantidade que foi reservada
+					if(server.retiraCapacidadeCinema(idCinema, idFilme, idHorario, Short.parseShort(String.valueOf(qtdIngressos)))){
+						compraRealizada = true;
+						System.out.println("Comprar de ingresso para Cinema realizada com suceso!");
+					}
+
 				}else{
-					System.out.println("Comprar de ingresso para Cinema não realizada por falta de capacidade!");
+					System.out.println("Comprar de ingresso para Cinema não realizada por falta de lugares disponíveis!");
 				}
 			}
 			
@@ -176,11 +186,16 @@ public class RmiServer extends UnicastRemoteObject implements RmiFunctions {
 				
 				System.out.println("Teatro com capacidade de "+teatro.getCapacidade());
 				
-				if(teatro != null && teatro.getCapacidade() > qtdIngressos){
-					compraRealizada = true;
-					System.out.println("Reserva de teatro realizada com sucesso!");
+				if(teatro != null && teatro.getCapacidade() >= qtdIngressos){
+					
+					//Retira da capacidade do teatro a quantidade que foi reservada
+					if(server.retiraCapacidadeTeatro(idTeatro, idPeca, idHorario, Short.parseShort(String.valueOf(qtdIngressos)))){
+						compraRealizada = true;
+						System.out.println("Reserva de teatro realizada com sucesso!");
+					}
+					
 				}else{
-					System.out.println("Reserva de teatro realizada não realizada por falta de ingressos!");
+					System.out.println("Reserva de teatro realizada não realizada por falta de lugares disponíveis!");
 				}
 			}
 			
